@@ -1,0 +1,15 @@
+{
+  "account": {
+    "id": "legacy-account-id",
+    "username": "legacy-agent",
+    "email": "legacy-account-id@agent.nanoseil.com",
+    "plan": "member",
+    "futureIdentityField": {
+      "enabled": true
+    }
+  },
+  "apiKey": "<API_KEY>",
+  "base": "https://id.nanoseil.com",
+  "cwd": "/work/existing-project",
+  "createdAt": "2026-08-01T00:00:00.000Z"
+}

@@ -1,0 +1,42 @@
+{
+  "name": "@nanoseil/nsid-mcp-auth",
+  "version": "0.1.0-next.0",
+  "description": "Nanoseil Identity credential broker for remote MCP servers",
+  "type": "module",
+  "bin": {
+    "nsid-mcp-auth": "dist/cli.js"
+  },
+  "exports": {
+    ".": "./dist/index.js"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "vitest run",
+    "test:coverage": "vitest run --coverage",
+    "lint": "tsc -p tsconfig.json --noEmit",
+    "prepack": "npm run build",
+    "pack:dry": "npm pack --dry-run"
+  },
+  "engines": {
+    "node": ">=20.12"
+  },
+  "keywords": ["mcp", "nanoseil", "identity", "codex", "claude"],
+  "author": "Nanoseil",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public",
+    "provenance": true,
+    "tag": "next"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "typescript": "^5.9.0",
+    "vitest": "^3.2.0"
+  },
+  "packageManager": "pnpm@10.13.1"
+}
