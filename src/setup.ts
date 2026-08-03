@@ -1,12 +1,20 @@
 import { chmod, copyFile, mkdir, readFile, rename, writeFile } from "node:fs/promises";
 import { homedir } from "node:os";
 import { dirname, join } from "node:path";
+import { createRequire } from "node:module";
 import type { ServerName } from "./servers.js";
 
 export type ClientName = "claude" | "codex";
 
+const require = createRequire(import.meta.url);
+const packageManifest = require("../package.json") as { name?: unknown; version?: unknown };
+if (packageManifest.name !== "@nanoseil/nsid-mcp-auth" || typeof packageManifest.version !== "string") {
+  throw new Error("Invalid nsid-mcp-auth package manifest");
+}
+export const PACKAGE_VERSION = packageManifest.version;
+
 function commandArgs(profile: string | undefined, server: ServerName): string[] {
-  return ["-y", "@nanoseil/nsid-mcp-auth@0.1.0-next.0", ...(profile ? ["--profile", profile] : []), "--server", server];
+  return ["-y", `@nanoseil/nsid-mcp-auth@${PACKAGE_VERSION}`, ...(profile ? ["--profile", profile] : []), "--server", server];
 }
 
 export function renderedEntry(client: ClientName, profile: string | undefined, server: ServerName): string {
