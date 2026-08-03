@@ -22,7 +22,7 @@ until every `OPEN` or `PARTIAL` item is closed on a reviewable commit.
 | 15 | CLOSED | Public CLI no longer accepts or documents `--config`; custom paths remain library-level dependency injection for tests | Add CLI argv rejection test for `--config` and arbitrary positional path |
 | 16 | OPEN | Claude JSON whole-file serialization can change formatting; Codex marker update lacks TOML validation and unmanaged-table collision detection | Evaluate official Claude/Codex CLI first; otherwise add scope contract, unknown-field/comment, invalid TOML, duplicate table and broken marker tests |
 | 17 | PARTIAL | SoRA confirmed the canonical Islands URL. Registry stores it with `active:false`; active allowlist filters it out and resolver rejects `islands` before credential transmission | URL decision is closed, but release dependency remains open until deployed `/SKILL.md` 200, unauth MCP 401, authenticated initialize success, and post-activation negative allowlist tests |
-| 18 | CLOSED | Uncreated repository metadata was removed from `package.json` | Add packed-manifest assertion that no repository field is emitted until the repository exists |
+| 18 | CLOSED | The formal repository now exists and `package.json` points to its exact public GitHub URL | Packed manifest contains the matching repository metadata required for provenance |
 
 ## Current verified baseline
 
