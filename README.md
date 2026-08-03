@@ -78,4 +78,9 @@ Neither output contains a token.
   retried by the MCP client.
 
 Publishing is intentionally separate from building and packing. Do not run
-`npm publish` until the operator gives an explicit release approval.
+`npm publish` from a developer workstation. Releases use the protected
+`npm-release` GitHub environment and npm trusted publishing (`.github/workflows/release.yml`)
+so the package is published with provenance and the selected dist-tag. The
+`next` tag is required while the package version contains a pre-release suffix;
+upgrade consumers by changing the exact pin in generated configuration and
+running setup again.

@@ -1,0 +1,39 @@
+name: publish-npm
+
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "npm dist-tag (next for 0.x pre-release builds)"
+        required: true
+        default: next
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    environment: npm-release
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10.13.1
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          registry-url: https://registry.npmjs.org
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm lint
+      - run: pnpm test
+      - run: pnpm pack:dry
+      - name: Publish with npm trusted publishing
+        env:
+          NPM_CONFIG_PROVENANCE: "true"
+          RELEASE_TAG: ${{ inputs.tag || 'next' }}
+        run: npm publish --access public --tag "$RELEASE_TAG" --provenance

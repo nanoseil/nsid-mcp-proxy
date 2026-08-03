@@ -2,9 +2,16 @@ import { mkdtemp, readFile, readdir, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { describe, expect, it } from "vitest";
-import { updateSetup } from "../src/setup.js";
+import { PACKAGE_VERSION, updateSetup } from "../src/setup.js";
 
 describe("setup generator", () => {
+  it("pins the package manifest version", async () => {
+    const directory = await mkdtemp(join(tmpdir(), "nsid-setup-"));
+    const path = join(directory, "claude.json");
+    await updateSetup("claude", undefined, "nsos", path);
+    expect(await readFile(path, "utf8")).toContain(`@nanoseil/nsid-mcp-auth@${PACKAGE_VERSION}`);
+  });
+
   it("updates Claude JSON idempotently and preserves unrelated entries", async () => {
     const directory = await mkdtemp(join(tmpdir(), "nsid-setup-"));
     const path = join(directory, "claude.json");
