@@ -25,9 +25,11 @@ jobs:
           version: 10.13.1
       - uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version: 24
           registry-url: https://registry.npmjs.org
           cache: pnpm
+      - name: Use npm trusted-publishing compatible CLI
+        run: npm install --global npm@11.5.1
       - run: pnpm install --frozen-lockfile
       - run: pnpm lint
       - run: pnpm test
