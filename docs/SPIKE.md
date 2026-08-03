@@ -15,7 +15,7 @@ profile/persona is an explicit override. Only a
 built-in server alias is accepted. There is no
 token option, URL option, HTTP listener, install script, or postinstall script.
 Before stable release, generated configuration pins the reviewed exact version
-`@nanoseil/nsid-mcp-auth@0.1.0-next.0`.
+`@nanoseil/nsid-mcp-auth@0.1.0-next.1`.
 
 ## Transport state machine
 
@@ -53,7 +53,7 @@ dev/test build and is absent from the release manifest and public CLI.
 
 ## Package manifest and release ladder
 
-- package: `@nanoseil/nsid-mcp-auth@0.1.0-next.0`
+- package: `@nanoseil/nsid-mcp-auth@0.1.0-next.1`
 - bin: `nsid-mcp-auth`
 - Node: `>=20.12`
 - runtime dependencies: zero
@@ -92,7 +92,7 @@ Claude:
     "nanoseil-islands": {
       "type": "stdio",
       "command": "npx",
-      "args": ["-y", "@nanoseil/nsid-mcp-auth@0.1.0-next.0", "--server", "nsos"]
+      "args": ["-y", "@nanoseil/nsid-mcp-auth@0.1.0-next.1", "--server", "nsos"]
     }
   }
 }
@@ -103,7 +103,7 @@ Codex:
 ```toml
 [mcp_servers.nanoseil-islands]
 command = "npx"
-args = ["-y", "@nanoseil/nsid-mcp-auth@0.1.0-next.0", "--server", "nsos"]
+args = ["-y", "@nanoseil/nsid-mcp-auth@0.1.0-next.1", "--server", "nsos"]
 ```
 
 The NSOS direct `bearer_token_env_var` path is not modified by this package.

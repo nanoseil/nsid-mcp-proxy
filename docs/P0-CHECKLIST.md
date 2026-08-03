@@ -28,7 +28,7 @@ until every `OPEN` or `PARTIAL` item is closed on a reviewable commit.
 
 - TypeScript typecheck passes.
 - 16 tests pass across identity, bridge, setup, and server registry.
-- Package is `@nanoseil/nsid-mcp-auth@0.1.0-next.0`; no publish occurred.
+- Package is `@nanoseil/nsid-mcp-auth@0.1.0-next.1`; publish is performed by the protected trusted-publisher workflow.
 - This baseline is a spike, not a release candidate.
 
 ## Release artifacts still required

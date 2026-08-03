@@ -1,6 +1,6 @@
 {
   "name": "@nanoseil/nsid-mcp-auth",
-  "version": "0.1.0-next.0",
+  "version": "0.1.0-next.1",
   "description": "Nanoseil Identity credential broker for remote MCP servers",
   "type": "module",
   "bin": {
