@@ -27,6 +27,11 @@
   },
   "keywords": ["mcp", "nanoseil", "identity", "codex", "claude"],
   "author": "Nanoseil",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nanoseil/nsid-mcp-proxy.git"
+  },
+  "homepage": "https://github.com/nanoseil/nsid-mcp-proxy#readme",
   "license": "MIT",
   "publishConfig": {
     "access": "public",
