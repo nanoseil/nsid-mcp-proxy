@@ -138,10 +138,21 @@ async function acquireLock(path: string, timeoutMs = 15_000): Promise<() => Prom
       };
     } catch (error) {
       if ((error as NodeJS.ErrnoException).code !== "EEXIST") throw error;
-      await assertSecureNode(path, "file", 0o600);
+      // The owner can finish and remove the lock between our failed `wx`
+      // create and this inspection. Treat that narrow disappearance as a
+      // normal retry instead of turning a successful concurrent create into
+      // an ENOENT failure.
+      try { await assertSecureNode(path, "file", 0o600); }
+      catch (cause) {
+        if ((cause as NodeJS.ErrnoException).code === "ENOENT") continue;
+        throw cause;
+      }
       let stale: LockRecord;
       try { stale = JSON.parse(await readFile(path, "utf8")) as LockRecord; }
-      catch { throw new Error("Invalid profile lock; refusing unsafe recovery"); }
+      catch (cause) {
+        if ((cause as NodeJS.ErrnoException).code === "ENOENT") continue;
+        throw new Error("Invalid profile lock; refusing unsafe recovery");
+      }
       const reclaimable = stale.host === hostname() && Number.isInteger(stale.ownerPid) &&
         Number.isFinite(stale.leaseUntil) && stale.leaseUntil < Date.now() && !pidIsActive(stale.ownerPid);
       if (reclaimable) {
