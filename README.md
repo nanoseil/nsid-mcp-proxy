@@ -12,7 +12,7 @@ one exact, built-in production endpoint.
 ## Create an identity explicitly
 
 ```bash
-npx -y @nanoseil/nsid-mcp-auth@0.1.0-next.0 identity create
+npx -y @nanoseil/nsid-mcp-auth@0.1.0-next.1 identity create
 ```
 
 By default the identity lives at
@@ -41,7 +41,7 @@ profile explicitly instead.
 ## Run as an MCP stdio server
 
 ```bash
-npx -y @nanoseil/nsid-mcp-auth@0.1.0-next.0 --server nsos
+npx -y @nanoseil/nsid-mcp-auth@0.1.0-next.1 --server nsos
 ```
 
 The production allowlist is exact:
@@ -59,8 +59,8 @@ The command displays the proposed entry and prompts before changing a file.
 Use `--yes` only after reviewing it.
 
 ```bash
-npx -y @nanoseil/nsid-mcp-auth@0.1.0-next.0 setup claude --server nsos
-npx -y @nanoseil/nsid-mcp-auth@0.1.0-next.0 setup codex --server nsos
+npx -y @nanoseil/nsid-mcp-auth@0.1.0-next.1 setup claude --server nsos
+npx -y @nanoseil/nsid-mcp-auth@0.1.0-next.1 setup codex --server nsos
 ```
 
 Claude updates `~/.claude.json` without replacing unrelated `mcpServers`.
